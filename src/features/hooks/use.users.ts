@@ -12,7 +12,7 @@ import { UserRepository } from "../../core/services/user.repository";
 export function useUsers() {
   const { users, currentUser } = useSelector((state: RootState) => state.users);
   const dispatch: AppDispatch = useDispatch();
-  // const url = "onrender.com/";
+  const url = "https://final-project-back-syq4.onrender.com";
 
   const repo: UserRepository = useMemo(() => new UserRepository(url), []);
 

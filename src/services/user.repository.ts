@@ -1,4 +1,4 @@
-import { User } from "../../features/models/user";
+import { User } from "../models/user";
 import { ApiRepository } from "./api.repository";
 
 type ApiResponse = {

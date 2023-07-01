@@ -1,3 +1,5 @@
+import { SyntheticEvent } from "react";
+
 export class ApiRepository<T extends { id: string | number }> {
   constructor(public url: string) {}
 
@@ -11,8 +13,7 @@ export class ApiRepository<T extends { id: string | number }> {
       const message = `Error: ${response.status}. ${response.statusText}`;
       throw new Error(message);
     }
-
-    return response.json() as Promise<T[]>;
+    return response.json();
   }
 
   async create(item: Partial<T>): Promise<T> {

@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { AppDispatch, RootState, store } from "../../core/store/store";
+import { AppDispatch, RootState, store } from "../store/store";
 import { useCallback, useMemo } from "react";
 import {
   ac,
@@ -8,7 +8,7 @@ import {
   registerUserAsync,
 } from "../redux/users.slice";
 import { User } from "../models/user";
-import { UserRepository } from "../../core/services/user.repository";
+import { UserRepository } from "../services/user.repository";
 
 export function useUsers() {
   const { users, currentUser, token } = useSelector(

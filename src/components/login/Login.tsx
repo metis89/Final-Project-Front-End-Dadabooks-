@@ -26,11 +26,16 @@ export default function Login() {
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="user">User / Email: </label>
-          <input type="text" id="user" name="user" />
+          <input type="text" id="user" name="user" placeholder="eee" />
         </div>
         <div>
           <label htmlFor="password">Password: </label>
-          <input type="password" id="password" name="password" />
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="aaa"
+          />
         </div>
         <button type="submit">Send</button>
       </form>

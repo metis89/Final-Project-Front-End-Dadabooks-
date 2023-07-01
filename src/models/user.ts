@@ -1,3 +1,5 @@
+import { Book } from "./book";
+
 export type User = {
   id: string;
   userName: string;
@@ -5,4 +7,5 @@ export type User = {
   password: string;
   isLogged: boolean;
   token: string;
+  books: Book[];
 };

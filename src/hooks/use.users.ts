@@ -1,50 +1,69 @@
-import { useSelector, useDispatch } from "react-redux";
-import { AppDispatch, RootState, store } from "../store/store";
-import { useCallback, useMemo } from "react";
-import {
-  ac,
-  loadUsersAsync,
-  loginUserAsync,
-  registerUserAsync,
-} from "../redux/users.slice";
+import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { User } from "../models/user";
 import { UserRepository } from "../services/user.repository";
 
-export function useUsers() {
-  const { users, currentUser, token } = useSelector(
-    (state: RootState) => state.users
-  );
-  const dispatch: AppDispatch = useDispatch();
-  const url = "http://localhost:9900/";
+export type UsersState = {
+  users: User[];
+  currentUser: Partial<User>;
+  token?: string;
+};
 
-  const repo: UserRepository = useMemo(() => new UserRepository(url), []);
+const initialState: UsersState = {
+  users: [] as User[],
+  currentUser: {} as Partial<User>,
+  token: localStorage.getItem("userToken") as string | undefined,
+};
 
-  const handleLoadUsers = useCallback(async () => {
-    dispatch(loadUsersAsync(repo));
-  }, [repo, dispatch]);
+// TEMP export const loadUsersAsync = createAsyncThunk(
+//   "users/load",
+//   async (repo: UserRepository) => {
+//     const response = await repo.getAll();
+//     return response;
+//   }
+// );
 
-  const handleRegisterUser = async (user: Partial<User>) => {
-    dispatch(registerUserAsync({ repo, user }));
-  };
+export const registerUserAsync = createAsyncThunk<
+  User,
+  { repo: UserRepository; user: Partial<User> }
+>("users/register", async ({ repo, user }) => {
+  return await repo.register(user);
+});
 
-  const handleLoginUser = async (user: Partial<User>) => {
-    await dispatch(loginUserAsync({ repo, user }));
-    const loggedUser = store.getState().users.currentUser;
-    console.log(loggedUser);
-    localStorage.setItem("userToken", loggedUser.token as string);
-  };
+export const loginUserAsync = createAsyncThunk<
+  Partial<User>,
+  { repo: UserRepository; user: Partial<User> }
+>("users/login", async ({ repo, user }) => {
+  const result = await repo.login(user);
+  return result;
+});
 
-  const handleGetToken = (token: string) => {
-    dispatch(ac.getToken(token));
-  };
+const usersSlice = createSlice({
+  name: "users",
+  initialState,
+  reducers: {
+    getToken: (state, { payload }: PayloadAction<string>) => {
+      state.token = payload;
+    },
+    logoutUser: (state) => ({
+      ...state,
+      token: undefined,
+    }),
+  },
+  extraReducers: (builder) => {
+    // TEMP builder.addCase(loadUsersAsync.fulfilled, (state, { payload }) => ({
+    //   ...state,
+    //   users: payload,
+    // }));
+    builder.addCase(registerUserAsync.fulfilled, (state, { payload }) => ({
+      ...state,
+      users: [...state.users, payload],
+    }));
+    builder.addCase(loginUserAsync.fulfilled, (state, { payload }) => ({
+      ...state,
+      currentUser: payload,
+    }));
+  },
+});
 
-  return {
-    handleLoadUsers,
-    users,
-    handleRegisterUser,
-    handleLoginUser,
-    currentUser,
-    token: token,
-    handleGetToken,
-  };
-}
+export default usersSlice.reducer;
+export const ac = usersSlice.actions;

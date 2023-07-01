@@ -1,43 +1,49 @@
 import { SyntheticEvent } from "react";
-import { useUsers } from "../../hooks/use.users";
-import { User } from "../../models/user";
+
+import { url } from "../../config";
+import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
 export default function Register() {
-  const { handleRegisterUser } = useUsers();
   const navigate = useNavigate();
 
-  const handleSubmit = (event: SyntheticEvent) => {
+  const handleRegister = async (event: SyntheticEvent) => {
+    const formRegisterElement: HTMLFormElement =
+      document.querySelector(".register-form")!;
     event.preventDefault();
-    const formElement = event.target as HTMLFormElement;
-    const data = {
-      userName: (formElement.user as HTMLInputElement).value,
-      email: (formElement.email as HTMLInputElement).value,
-      password: (formElement.password as HTMLInputElement).value,
-    } as unknown as Partial<User>;
-    handleRegisterUser(data);
-    formElement.reset();
+
+    const data = new FormData(formRegisterElement);
+
+    const urlRegister = url + "user/register";
+    const response = await fetch(urlRegister, {
+      method: "POST",
+      headers: {},
+      body: data,
+    });
+    const state = await response.json();
+
+    console.log(state);
+
+    state.userData = state.user;
+    delete state.user;
+    Swal.fire({
+      icon: "success",
+      text: "Succesfully Registered!",
+    });
     navigate("/login");
   };
 
   return (
-    <>
-      <h2>Get registered</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="user">User Name: </label>
-          <input type="text" id="user" name="user" />
-        </div>
-        <div>
-          <label htmlFor="email">Email: </label>
-          <input type="email" id="email" name="email" />
-        </div>
-        <div>
-          <label htmlFor="password">Password: </label>
-          <input type="password" id="password" name="password" />
-        </div>
-        <button type="submit">Sign Up</button>
+    <div className="loaded-route">
+      <form className="register-form" id="form" onSubmit={handleRegister}>
+        <h2 className="title_form">REGISTER</h2>
+        <input type="text" placeholder="Username" name="userName"></input>
+        <input type="text" placeholder="Email" name="email"></input>
+        <input type="password" placeholder="Password" name="password"></input>
+        <button type="submit" className="login_button">
+          SUBMIT
+        </button>
       </form>
-    </>
+    </div>
   );
 }

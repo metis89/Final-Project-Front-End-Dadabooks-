@@ -1,6 +1,6 @@
 import { SyntheticEvent } from "react";
-import { url } from "../../../config";
-// import Swal from "sweetalert2";
+import { url } from "../../config";
+import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
 export default function BookForm() {
@@ -26,10 +26,10 @@ export default function BookForm() {
 
     state.bookData = state.book;
     delete state.book;
-    // Swal.fire({
-    //   icon: "success",
-    //   text: "Succesfully Registered!",
-    // });
+    Swal.fire({
+      icon: "success",
+      text: "Succesfully Registered!",
+    });
     navigate("/main");
   };
 

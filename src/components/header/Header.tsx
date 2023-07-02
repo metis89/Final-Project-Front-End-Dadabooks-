@@ -1,78 +1,69 @@
-// import { useDispatch, useSelector } from "react-redux";
-// import { useNavigate } from "react-router-dom";
-// import { storeName } from "../../config";
-// import { RootState } from "../../redux/store";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { storeName } from "../../config";
+import { RootState } from "../../redux/store";
+import userSlice, { logout } from "../../redux/users.slice";
+import Swal from "sweetalert2";
 
-// import "./Header.scss";
-// import userSlice, { logout } from "../../redux/users.slice";
-// import Swal from "sweetalert2";
+export function Header({ children }: { children: JSX.Element }) {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-// export function Header({ children }: { children: JSX.Element }) {
-//   const navigate = useNavigate();
-//   const dispatch = useDispatch();
+  const imageUrl = "http://localhost:9900/";
 
-//   const imageUrl = "http://localhost:9900/";
+  const { token, userData } = useSelector((state: RootState) => state.user);
 
-//   const { token, userData } = useSelector((state: RootState) => state.user);
+  const handleUser = () => {
+    if (token) {
+      runLogout();
+      window.location.reload();
+    } else {
+      navigate("login");
+    }
+  };
 
-//   const handleUser = () => {
-//     if (token) {
-//       runLogout();
-//       window.location.reload();
-//     } else {
-//       navigate("login");
-//     }
-//   };
+  const handleRegister = () => {
+    console.log("Register");
+    navigate("register");
+  };
 
-//   const handleRegister = () => {
-//     console.log("Register");
-//     navigate("register");
-//   };
+  const runLogout = () => {
+    Swal.fire({ icon: "success", text: "Succesfully logged out!" });
+    dispatch(logout());
+    localStorage.removeItem(storeName);
+  };
 
-//   const runLogout = () => {
-//     Swal.fire({ icon: "success", text: "Succesfully logged out!" });
-//     dispatch(logout());
-//     localStorage.removeItem(storeName);
-//   };
-
-//   return (
-//     <>
-//       <header className="title">
-//         <div className="title_name">
-//           <h1>SRC</h1>
-//         </div>
-//         <div className="title_info">
-//           {token ? (
-//             <>
-//               <div className="user_info">
-//                 <span className="user_name">{userData?.userName}</span>
-//                 <button onClick={handleUser} className="logout_button">
-//                   Logout
-//                 </button>
-//               </div>
-//               <figure className="image_container">
-//                 <img
-//                   src={imageUrl + userData?.avatar.urlOriginal}
-//                   height={"50px"}
-//                   width={"50px"}
-//                 ></img>
-//               </figure>
-//             </>
-//           ) : (
-//             <>
-//               <div className="user_info user_buttons">
-//                 <button onClick={handleRegister} className="register_button">
-//                   Register
-//                 </button>
-//                 <button onClick={handleUser} className="login_button">
-//                   Login
-//                 </button>
-//               </div>
-//             </>
-//           )}
-//         </div>
-//       </header>
-//       {children}
-//     </>
-//   );
-// }
+  return (
+    <>
+      <header className="title">
+        <div className="title_name">
+          <h1>DadaBooks</h1>
+        </div>
+        <div className="title_info">
+          {token ? (
+            <>
+              <div className="user_info">
+                <span className="user_name">{userData?.userName}</span>
+                <button onClick={handleUser} className="logout_button">
+                  Logout
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="user_info user_buttons">
+                <button onClick={handleRegister} className="register_button">
+                  Register
+                </button>
+                <button onClick={handleUser} className="login_button">
+                  Login
+                </button>
+              </div>
+            </>
+          )}
+        </div>
+      </header>
+      {children}
+    </>
+  );
+}

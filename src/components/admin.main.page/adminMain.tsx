@@ -1,7 +1,7 @@
 import { lazy } from "react";
-import Form from "../book.form/NewBookForm";
+import BookForm from "../book.form/bookForm";
 
-const AdminMainPage = lazy(() => import("../admin.main/AdminMain"));
+const AdminMainPage = lazy(() => import("../admin.main.page/adminMain"));
 
 export default function NewBook() {
   const handleNewBook = () => {
@@ -16,7 +16,7 @@ export default function NewBook() {
         <button className="new_button" onClick={handleNewBook}>
           Add new book to the database
         </button>
-        <NewBookForm></NewBookForm>
+        <BookForm></BookForm>
       </div>
       <div className="loaded-route">
         <button className="modify_button" onClick={handleModifyBook}>

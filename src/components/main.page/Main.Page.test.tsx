@@ -2,7 +2,7 @@ import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
-import Home from "./Main.Page";
+import Home from "./mainPage";
 import { store } from "../../redux/store";
 
 describe("Given Home component", () => {

@@ -1,11 +1,11 @@
 import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 
-const Home = lazy(() => import("../main.page/Main.Page"));
-const Login = lazy(() => import("../login/Login"));
-const Register = lazy(() => import("../register/Register"));
+const Home = lazy(() => import("../main.page/mainPage"));
+const Login = lazy(() => import("../login.page/login"));
+const Register = lazy(() => import("../register.page/register"));
 const ErrorPage = lazy(() => import("../errorPage/errorPage"));
-const BookList = lazy(() => import("../list/BookList"));
+const BookList = lazy(() => import("../list/bookList"));
 export function AppRoutes() {
   return (
     <Suspense>

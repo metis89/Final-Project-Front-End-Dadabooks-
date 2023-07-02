@@ -1,5 +1,5 @@
 import { SyntheticEvent } from "react";
-
+import "./register.scss";
 import { url } from "../../config";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";

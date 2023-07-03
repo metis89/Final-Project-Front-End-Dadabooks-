@@ -9,14 +9,11 @@ export function BookCard({ item }: PropsType) {
   return (
     <Link to={"/details/" + item.id}>
       <li className="books-list">
-        <img
-          src={item.image}
-          alt={item.title}
-          width="140"
-          height="250"
-          className="book-image"
-        />
-        <p className={item.title}> {item.title}</p>
+        <p className={item.title}>{item.title}</p>
+        <p className={item.author}>{item.author}</p>
+        {/* <p className={item.year}>{item.year}</p> */}
+        <p className={item.genre}>{item.genre}</p>
+        <p className={item.synopsis}>{item.synopsis}</p>
       </li>
     </Link>
   );

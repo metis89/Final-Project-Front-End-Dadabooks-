@@ -8,7 +8,7 @@ type PropsType = {
 export function BookCard({ item }: PropsType) {
   return (
     <Link to={"/details/" + item.id}>
-      <li className="book">
+      <li className="books-list">
         <img
           src={item.image}
           alt={item.title}

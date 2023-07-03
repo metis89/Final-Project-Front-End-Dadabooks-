@@ -27,17 +27,16 @@ export function App() {
   };
 
   const menuOptions: MenuOptions = [
-    { url: "/", label: "Inicio", protected: false },
-    { url: "books", label: "Books", protected: false },
+    { url: "/", label: "Home", protected: false },
   ];
 
   initialLoginCheck();
 
   return (
     <>
-      <Header>
+      {/* <Header>
         <Menu options={menuOptions}></Menu>
-      </Header>
+      </Header> */}
       <AppRoutes></AppRoutes>
       <Footer></Footer>
     </>

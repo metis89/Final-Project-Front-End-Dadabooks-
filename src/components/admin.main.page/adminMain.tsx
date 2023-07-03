@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import BookForm from "../book.form/bookForm";
+import BookForm from "../form/bookForm";
 
 const AdminMainPage = lazy(() => import("../admin.main.page/adminMain"));
 

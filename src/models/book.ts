@@ -1,6 +1,7 @@
 import { Image } from "../types/image";
 
 export type Book = {
+  id: string;
   title: string;
   author: string;
   year: number;

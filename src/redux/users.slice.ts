@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
-
-type UserStates = "idle" | "logging" | "logged";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { loginUserAsync, registerUserAsync } from "./thunks";
+import { User } from "../models/user";
 
 export type UserLogged = {
   id: string;
@@ -8,32 +8,41 @@ export type UserLogged = {
   email: string;
 };
 
-type State = {
-  userState: UserStates;
-  token: string;
-  userData: UserLogged | null;
+type userState = {
+  users: User[];
+  currentUser: Partial<User>;
+  token?: string;
 };
 
-const initialState: State = {
-  userState: "idle",
-  token: "",
-  userData: null,
+const initialState: userState = {
+  users: [] as User[],
+  currentUser: {} as Partial<User>,
+  token: localStorage.getItem("userToken") as string | undefined,
 };
 
 const userSlice = createSlice({
   initialState,
   name: "user",
   reducers: {
-    logout: () => {
-      initialState;
+    getToken: (state, { payload }: PayloadAction<string>) => {
+      state.token = payload;
     },
-    login: (_state: State, { payload }) => ({
-      token: payload.token,
-      userState: "logged",
-      userData: payload.userData,
-    }),
+    logout: () => {
+      return initialState;
+    },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(registerUserAsync.fulfilled, (state, { payload }) => ({
+      ...state,
+      users: [...state.users, payload],
+    }));
+    builder.addCase(loginUserAsync.fulfilled, (state, { payload }) => ({
+      ...state,
+      currentUser: payload,
+    }));
   },
 });
 
-export const { logout, login } = userSlice.actions;
+export const { logout } = userSlice.actions;
 export default userSlice.reducer;
+export const ac = userSlice.actions;

@@ -10,7 +10,7 @@ export class BookRepository extends ApiRepository<Book> {
   }
 
   async getAll(): Promise<Book[]> {
-    const response = await fetch(`${this.url}Book`);
+    const response = await fetch(`${this.url}books`);
     console.log(response);
     if (!response.ok) {
       const message = `Error: ${response.status}. ${response.statusText}`;
@@ -19,11 +19,6 @@ export class BookRepository extends ApiRepository<Book> {
 
     const data = response.json() as Promise<ApiResponse>;
     return (await data).items;
-  }
-
-  async get(id: Book["id"]): Promise<Book> {
-    const response = await fetch(this.url + (id as string));
-    return response.json() as Promise<Book>;
   }
 
   async create(item: Partial<Book>): Promise<Book> {

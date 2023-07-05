@@ -29,12 +29,18 @@ export function useUsers() {
     dispatch(ac.getToken(token));
   };
 
+  const handleLogout = () => {
+    dispatch(ac.logout());
+    localStorage.removeItem("userToken");
+  };
+
   return {
     handleRegister,
     handleLogin,
+    handleGetToken,
     users,
     currentUser,
     token: token,
-    handleGetToken,
+    handleLogout,
   };
 }

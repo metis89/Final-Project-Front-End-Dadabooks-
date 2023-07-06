@@ -1,35 +1,59 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { Book } from "../models/book";
+import { BookRepository } from "../services/book.repository";
 
-export type BookState = {
-  books: Book[];
+export type State = {
+  bookList: Book[];
+  bookData: Partial<Book>;
+  token?: string;
 };
 
-const initialState: BookState = {
-  books: [],
+const initialState: State = {
+  bookList: [],
+  token: "",
+  bookData: {} as Partial<Book>,
 };
 
-const booksSlice = createSlice({
+export const loadBookAsync = createAsyncThunk(
+  "books/load",
+  async (repo: BookRepository) => {
+    const response = await repo.getAll();
+    return response;
+  }
+);
+
+export const registerBookAsync = createAsyncThunk<
+  Book,
+  { repo: BookRepository; data: FormData }
+>("books/create", async ({ repo, data }) => {
+  return await repo.create(data);
+});
+
+export const editBookAsync = createAsyncThunk<
+  Book,
+  { repo: BookRepository; data: Partial<Book> }
+>("books/update", async ({ repo, data }) => {
+  return await repo.update(data);
+});
+
+const bookSlice = createSlice({
   name: "books",
   initialState,
-  reducers: {
-    load: (state, action) => {
-      state.books = action.payload;
-    },
-
-    // add: (state, action) => {
-    //   state.books = action.payload;
-    // },
-
-    // edit: (state, action) => {
-    //   state.books = action.payload;
-    // },
-
-    // delete: (state, action) => {
-    //   state.books = action.payload;
-    // },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(loadBookAsync.fulfilled, (state, { payload }) => ({
+      ...state,
+      bookList: payload,
+    }));
+    builder.addCase(registerBookAsync.fulfilled, (state, { payload }) => ({
+      ...state,
+      books: payload,
+    }));
+    builder.addCase(editBookAsync.fulfilled, (state, { payload }) => ({
+      ...state,
+      books: payload,
+    }));
   },
 });
 
-export const { load } = booksSlice.actions;
-export default booksSlice.reducer;
+export default bookSlice.reducer;

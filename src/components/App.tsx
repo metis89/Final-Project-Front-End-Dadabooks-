@@ -1,44 +1,26 @@
-import { AppRoutes } from "./app.routes/App.routes";
-import { MenuOptions } from "../types/menu.options";
-import { storeName } from "../../src/config";
-import { UserLogged, login } from "../redux/users.slice";
-import { useDispatch } from "react-redux";
-import jwtDecode from "jwt-decode";
-import { Menu } from "./menu/menu";
-import { Header } from "./header/header";
-import { Footer } from "./footer/footer";
+import { useEffect } from "react";
+import { useUsers } from "../../src/hooks/use.users";
+import { AppRoutes } from "../../src/components/app.routes/App.routes";
+import { store } from "../../src/redux/store";
+
+// import "/app.scss";
 
 export function App() {
-  const dispatch = useDispatch();
+  const { handleGetToken } = useUsers();
+  const userToken = store.getState().users.currentUser.token;
 
-  const initialLoginCheck = () => {
-    const lsString = localStorage.getItem(storeName);
-
-    if (!lsString) return console.log("No hay datos en el local storage");
-    const { token } = JSON.parse(lsString);
-
-    if (token === undefined) {
-      return;
+  useEffect(() => {
+    const loggedUserToken = localStorage.getItem("userToken");
+    if (loggedUserToken) {
+      handleGetToken(loggedUserToken);
+      localStorage.setItem("userToken", loggedUserToken);
+      console.log("Hay token: " + userToken);
     }
-
-    const userData: UserLogged = jwtDecode(token);
-    userData.email = "";
-    dispatch(login({ token, userData }));
-  };
-
-  const menuOptions: MenuOptions = [
-    { url: "/", label: "Home", protected: false },
-  ];
-
-  initialLoginCheck();
+  });
 
   return (
     <>
-      {/* <Header>
-        <Menu options={menuOptions}></Menu>
-      </Header> */}
       <AppRoutes></AppRoutes>
-      <Footer></Footer>
     </>
   );
 }

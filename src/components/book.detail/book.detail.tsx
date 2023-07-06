@@ -1,16 +1,11 @@
 import { Book } from "../../models/book";
 import { UseBooks } from "../../hooks/use.books";
-import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
-type PropsType = {
-  item: Book;
-};
-
-export function BookCard({ item }: PropsType) {
-  const { books: books, handleLoadBooks } = UseBooks();
-  useEffect(() => {
-    handleLoadBooks();
-  }, [handleLoadBooks]);
+export function BookCard() {
+  const { books } = UseBooks();
+  const { id } = useParams();
+  const item: Book = books.find((item) => item.id === id) as Book;
 
   return (
     <li className="books-card">

@@ -15,7 +15,9 @@ export function useUsers() {
   const dispatch: AppDispatch = useDispatch();
 
   const handleRegister = async (user: Partial<User>) => {
+    console.log("handle register");
     dispatch(registerUserAsync({ repo, user }));
+    console.log("register submitted");
   };
 
   const handleLogin = async (user: Partial<User>): Promise<boolean> => {

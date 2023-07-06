@@ -3,7 +3,7 @@ import { useUsers } from "../../hooks/use.users";
 import { SyntheticEvent } from "react";
 import { User } from "../../models/user";
 import { Header } from "../header/header";
-import style from "./Login.module.scss";
+import "./login.scss";
 
 export default function Login() {
   const { handleLogin } = useUsers();
@@ -25,21 +25,18 @@ export default function Login() {
   return (
     <>
       <Header></Header>
-      <div className={style.form}>
-        <form onSubmit={handleSubmit}>
-          <div className={style.inputs}>
-            <label htmlFor="user">User</label>
-            <input type="text" id="user" name="user" required />
-          </div>
-          <div className={style.inputs}>
-            <label htmlFor="password">Password</label>
-            <input type="password" id="password" name="password" required />
-          </div>
-          <div className={style.submit}>
-            <button role="button" aria-selected="true" type="submit">
-              Send
-            </button>
-          </div>
+
+      <div className="loaded-route">
+        <form className="login-form">
+          <h2 className="title_form">LOGIN</h2>
+          {/* <span className="subtitle">
+          LOGIN OR <a href="/register">REGISTER</a> IF YOU DON'T HAVE AN ACCOUNT
+        </span> */}
+          <input type="text" placeholder="Username / Email" name="user"></input>
+          <input type="password" placeholder="Password" name="password"></input>
+          <button type="submit" className="login_button">
+            SUBMIT
+          </button>
         </form>
       </div>
     </>

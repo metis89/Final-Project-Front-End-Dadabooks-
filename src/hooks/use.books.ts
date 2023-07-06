@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { BookRepository } from "../services/book.repository";
 import { AppDispatch, RootState } from "../redux/store";
 import { load } from "../redux/books.slice";
+import { Book } from "../models/book";
 
 export function UseBooks() {
   const { books } = useSelector((state: RootState) => state.books);
@@ -19,8 +20,14 @@ export function UseBooks() {
     dispatch(load(books));
   }, [dispatch, bookRepo]);
 
+  const handleAddBook = async (book: Book) => {
+    const books = await bookRepo.create(book);
+    dispatch(load(books));
+  };
+
   return {
     handleLoadBooks,
+    handleAddBook,
     books,
     bookRepo,
     url,

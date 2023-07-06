@@ -8,7 +8,7 @@
 //   page: string;
 // };
 
-// export function Menu({ options }: PropsType) {
+// export function navBar({ options }: PropsType) {
 //   const { token } = useSelector((state: RootState) => state.user);
 
 //   return (

@@ -1,4 +1,5 @@
-.register-form {
+.login-form {
+  // background-color: rgb(216, 192, 159, 25%);
   height: 60%;
   width: 30rem;
   border-radius: 1rem;
@@ -23,12 +24,12 @@ input {
 }
 
 input:hover {
-  background-color: rgba(233, 203, 237, 0.658);
+  background-color: RGB(190 99 87);
 }
 
 input::placeholder {
   padding-left: 20px;
-  color: rgb(14, 32, 2);
+  color: rgb(40, 6, 6);
 }
 
 .subtitle {

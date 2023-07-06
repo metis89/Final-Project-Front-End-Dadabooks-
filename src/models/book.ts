@@ -1,5 +1,3 @@
-import { Image } from "../types/image";
-
 export type Book = {
   id: string;
   title: string;
@@ -7,6 +5,11 @@ export type Book = {
   year: number;
   genre: string;
   synopsis: string;
-  image: Image;
   books: Book[];
+  image: {
+    urlOriginal: string;
+    url: string;
+    mimetype: string;
+    size: number;
+  };
 };

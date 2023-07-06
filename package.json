@@ -9,6 +9,7 @@
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "test": "jest --watchAll --coverage",
+    "test:2": "jest --watchAll",
     "test:prod": "jest --watchAll --coverage --watchAll=false --passWithNoTests",
     "start": "json-server --watch db.json",
     "prepare": "husky install",
@@ -16,6 +17,7 @@
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
+    "express-validation": "^4.1.0",
     "firebase": "^9.23.0",
     "json-server": "^0.17.3",
     "jsonwebtoken": "^9.0.0",

@@ -2,29 +2,27 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { storeName } from "../../config";
 import { RootState } from "../../redux/store";
-import userSlice, { logout } from "../../redux/users.slice";
+import { logout } from "../../redux/users.slice";
 import Swal from "sweetalert2";
 
-export function Header({ children }: { children: JSX.Element }) {
+export function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const imageUrl = "http://localhost:9900/";
-
-  const { token, userData } = useSelector((state: RootState) => state.user);
+  const { token } = useSelector((state: RootState) => state.users);
 
   const handleUser = () => {
     if (token) {
       runLogout();
       window.location.reload();
     } else {
-      navigate("login");
+      navigate("/login");
     }
   };
 
   const handleRegister = () => {
     console.log("Register");
-    navigate("register");
+    navigate("/register");
   };
 
   const runLogout = () => {
@@ -43,7 +41,6 @@ export function Header({ children }: { children: JSX.Element }) {
           {token ? (
             <>
               <div className="user_info">
-                <span className="user_name">{userData?.userName}</span>
                 <button onClick={handleUser} className="logout_button">
                   Logout
                 </button>
@@ -63,7 +60,6 @@ export function Header({ children }: { children: JSX.Element }) {
           )}
         </div>
       </header>
-      {children}
     </>
   );
 }

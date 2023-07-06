@@ -10,24 +10,24 @@ const initialState: BookState = {
 };
 
 const booksSlice = createSlice({
-  initialState,
   name: "books",
+  initialState,
   reducers: {
     load: (state, action) => {
       state.books = action.payload;
     },
 
-    add: (state, action) => {
-      state.books = action.payload;
-    },
+    // add: (state, action) => {
+    //   state.books = action.payload;
+    // },
 
-    edit: (state, action) => {
-      state.books = action.payload;
-    },
+    // edit: (state, action) => {
+    //   state.books = action.payload;
+    // },
 
-    delete: (state, action) => {
-      state.books = action.payload;
-    },
+    // delete: (state, action) => {
+    //   state.books = action.payload;
+    // },
   },
 });
 

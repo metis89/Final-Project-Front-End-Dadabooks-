@@ -4,6 +4,7 @@ export default function mainPage() {
   return (
     <>
       <>
+        <h1>Welcome to DadaBooks</h1>
         <div>
           <Link to={"/home"}>Home</Link>
         </div>

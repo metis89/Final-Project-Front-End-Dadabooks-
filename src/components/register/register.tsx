@@ -2,8 +2,7 @@ import { SyntheticEvent } from "react";
 import { useUsers } from "../../hooks/use.users";
 import { User } from "../../models/user";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import style from "./Register.module.scss";
+
 import { Header } from "../header/header";
 
 export default function Register() {
@@ -12,6 +11,7 @@ export default function Register() {
 
   const handleSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
+    console.log("SUBMIT");
     const formElement = event.target as HTMLFormElement;
     const data = {
       userName: (formElement.elements.namedItem("user") as HTMLInputElement)
@@ -22,51 +22,32 @@ export default function Register() {
         .value,
     } as unknown as Partial<User>;
 
-    if (data.userName === "" || data.email === "" || data.password === "") {
-      Swal.fire({
-        background: "black",
-        imageUrl: "/clay.gif",
-        imageHeight: "300px",
-        title: "",
-      });
-      navigate("/register");
-    } else {
-      handleRegister(data);
-      console.log(data);
-      formElement.reset();
-      navigate("/login");
-    }
+    handleRegister(data);
+    console.log("handle submitted");
+    formElement.reset();
+    navigate("/login");
   };
 
   return (
     <>
       <Header></Header>
 
-      <div className={style.form}>
-        <form className="register-form" id="form">
-          <h2 className="title_form">REGISTER</h2>
-
-          <input
-            type="text"
-            placeholder="Username"
-            name="userName"
-            required
-          ></input>
-
-          <input type="email" placeholder="Email" name="email" required></input>
-
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            required
-          ></input>
-
-          <button type="submit" className="login_button">
-            SUBMIT
-          </button>
-        </form>
-      </div>
+      <h2>Get registered</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="user">User Name: </label>
+          <input type="text" id="user" name="user" />
+        </div>
+        <div>
+          <label htmlFor="email">Email: </label>
+          <input type="email" id="email" name="email" />
+        </div>
+        <div>
+          <label htmlFor="password">Password: </label>
+          <input type="password" id="password" name="password" />
+        </div>
+        <button type="submit">Sign Up</button>
+      </form>
     </>
   );
 }

@@ -16,7 +16,7 @@ export function AppRoutes() {
         <Route path={"/home"} element={<Home></Home>}></Route>
         <Route path={"/login"} element={<Login></Login>}></Route>
         <Route path={"/register"} element={<Register></Register>}></Route>
-        <Route path={"/detail"} element={<Details></Details>}></Route>
+        <Route path={"/home/detail/:id"} element={<Details></Details>}></Route>
         <Route path={"/bookform"} element={<BookForm></BookForm>}></Route>
         <Route path={"/*"} element={<ErrorPage></ErrorPage>}></Route>
       </Routes>

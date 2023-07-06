@@ -5,7 +5,7 @@ const MainPage = lazy(() => import("../main/mainPage"));
 const Home = lazy(() => import("../home/home"));
 const Login = lazy(() => import("../login/login"));
 const Register = lazy(() => import("../register/register"));
-// const Details = lazy(() => import("../details/details"));
+const Details = lazy(() => import("../book.detail/book.detail"));
 const ErrorPage = lazy(() => import("../errorPage/errorPage"));
 const BookForm = lazy(() => import("../book.form/bookForm"));
 export function AppRoutes() {
@@ -16,7 +16,7 @@ export function AppRoutes() {
         <Route path={"/home"} element={<Home></Home>}></Route>
         <Route path={"/login"} element={<Login></Login>}></Route>
         <Route path={"/register"} element={<Register></Register>}></Route>
-        {/* <Route path={"/details"} element={<Details></Details>}></Route> */}
+        <Route path={"/detail"} element={<Details></Details>}></Route>
         <Route path={"/bookform"} element={<BookForm></BookForm>}></Route>
         <Route path={"/*"} element={<ErrorPage></ErrorPage>}></Route>
       </Routes>

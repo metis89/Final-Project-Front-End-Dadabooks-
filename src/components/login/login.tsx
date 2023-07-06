@@ -11,6 +11,7 @@ export default function Login() {
 
   const handleSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
+    console.log("LOGIN");
     const element = event.target as HTMLFormElement;
     const inputs = element.querySelectorAll("input");
     const loggedUser = {
@@ -18,8 +19,9 @@ export default function Login() {
       password: inputs[1].value,
     } as Partial<User>;
     handleLogin(loggedUser);
+    console.log("handle logged");
     element.reset();
-    navigate("/list");
+    navigate("/home");
   };
 
   return (
@@ -27,8 +29,8 @@ export default function Login() {
       <Header></Header>
 
       <div className="loaded-route">
-        <form className="login-form">
-          <h2 className="title_form">LOGIN</h2>
+        <h2 className="title_form">LOGIN</h2>
+        <form className="login-form" onSubmit={handleSubmit}>
           {/* <span className="subtitle">
           LOGIN OR <a href="/register">REGISTER</a> IF YOU DON'T HAVE AN ACCOUNT
         </span> */}

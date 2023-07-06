@@ -2,7 +2,7 @@ import { Book } from "../../models/book";
 import { UseBooks } from "../../hooks/use.books";
 import { useParams } from "react-router-dom";
 
-export function BookCard() {
+export default function BookCard() {
   const { books } = UseBooks();
   const { id } = useParams();
   const item: Book = books.find((item) => item.id === id) as Book;

@@ -1,8 +1,4 @@
-import { useNavigate } from "react-router-dom";
-import { useUsers } from "../../hooks/use.users";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
-import { BookCard } from "../book.detail/book.detail";
+import { BookCard } from "../book.card/book.card";
 import { UseBooks } from "../../hooks/use.books";
 import { useEffect } from "react";
 import { Header } from "../header/header";
@@ -14,35 +10,15 @@ export default function Home() {
     handleLoadBooks();
   }, [handleLoadBooks]);
 
-  const { handleLogout } = useUsers();
-  const navigate = useNavigate();
-  const { token, currentUser } = useSelector((state: RootState) => state.users);
-
-  const handleUser = () => {
-    if (token) {
-      runLogout();
-    } else {
-      navigate("/login");
-    }
-  };
-
-  const handleRegister = () => {
-    console.log("Register");
-    navigate("/register");
-  };
-
-  const runLogout = () => {
-    handleLogout();
-  };
-
   return (
     <>
       <Header></Header>
-      <div>
-        {books.map((item) => (
-          <BookCard item={item} key={item.id}></BookCard>
+      <h1>New Books</h1>
+      <ul>
+        {books.map((book) => (
+          <BookCard item={book} key={book.id}></BookCard>
         ))}
-      </div>
+      </ul>
     </>
   );
 }

@@ -1,0 +1,43 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+
+  form {
+    background: linear-gradient(
+      rgba(247, 178, 178, 0.1),
+      rgba(255, 255, 255, 0.2)
+    );
+    border-radius: 25px 0 25px 0;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+
+    input {
+      padding: 10px;
+    }
+
+    button {
+      all: unset;
+      width: 100px;
+      height: 30px;
+      font-size: 16px;
+      background: transparent;
+      border: none;
+      position: relative;
+      color: black;
+      cursor: pointer;
+      z-index: 1;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+  }
+}

@@ -21,6 +21,7 @@ export function UseBooks() {
   );
 
   const handleLoadBooks = useCallback(async () => {
+    console.log("Handle Load");
     dispatch(loadBookAsync(bookRepo));
   }, [dispatch, bookRepo]);
 

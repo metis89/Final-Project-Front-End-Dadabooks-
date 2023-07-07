@@ -2,38 +2,42 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { Book } from "../models/book";
 import { BookRepository } from "../services/book.repository";
 
-export type State = {
+export type BookState = {
   bookList: Book[];
-  bookData: Partial<Book>;
-  token?: string;
 };
 
-const initialState: State = {
-  bookList: [],
-  token: "",
-  bookData: {} as Partial<Book>,
+const initialState: BookState = {
+  bookList: [] as Book[],
 };
 
-export const loadBookAsync = createAsyncThunk(
+export const loadBookAsync = createAsyncThunk<Book[], BookRepository>(
   "books/load",
   async (repo: BookRepository) => {
-    const response = await repo.getAll();
-    return response;
+    const answer = await repo.getAll();
+    return answer;
   }
 );
 
-export const registerBookAsync = createAsyncThunk<
+export const createBookAsync = createAsyncThunk<
   Book,
-  { repo: BookRepository; data: FormData }
->("books/create", async ({ repo, data }) => {
-  return await repo.create(data);
+  { repo: BookRepository; book: Omit<Book, "id"> }
+>("books/create", async ({ repo, book }) => {
+  const response = await repo.create(book);
+  return response;
 });
 
-export const editBookAsync = createAsyncThunk<
-  Book,
-  { repo: BookRepository; data: Partial<Book> }
->("books/update", async ({ repo, data }) => {
-  return await repo.update(data);
+// export const editBookAsync = createAsyncThunk<
+//   Book,
+//   { repo: BookRepository; id: string; book: Partial<Book> }
+// >("books/edit", async ({ repo, id, book }) => {
+//   return await repo.update(id, book);
+// });
+
+export const deleteBookAsync = createAsyncThunk<
+  boolean,
+  { repo: BookRepository; id: string }
+>("books/delete", async ({ repo, id }) => {
+  return await repo.delete(id);
 });
 
 const bookSlice = createSlice({
@@ -45,11 +49,15 @@ const bookSlice = createSlice({
       ...state,
       bookList: payload,
     }));
-    builder.addCase(registerBookAsync.fulfilled, (state, { payload }) => ({
+    builder.addCase(createBookAsync.fulfilled, (state, { payload }) => ({
       ...state,
       books: payload,
     }));
-    builder.addCase(editBookAsync.fulfilled, (state, { payload }) => ({
+    // builder.addCase(editBookAsync.fulfilled, (state, { payload }) => ({
+    //   ...state,
+    //   books: payload,
+    // }));
+    builder.addCase(deleteBookAsync.fulfilled, (state, { payload }) => ({
       ...state,
       books: payload,
     }));

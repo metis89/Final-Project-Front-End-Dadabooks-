@@ -1,8 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { User } from "../models/user";
 import { UserRepository } from "../services/user.repository";
-import { BookRepository } from "../services/book.repository";
-import { Book } from "../models/book";
 
 export const registerUserAsync = createAsyncThunk<
   User,
@@ -15,15 +13,7 @@ export const registerUserAsync = createAsyncThunk<
 export const loginUserAsync = createAsyncThunk<
   Partial<User>,
   { repo: UserRepository; user: Partial<User> }
->("/login", async ({ repo, user }) => {
+>("user/login", async ({ repo, user }) => {
   const result = await repo.login(user);
   return result;
 });
-
-export const getAllBooksAsync = createAsyncThunk<Book[], BookRepository>(
-  "/home",
-  async (repo: BookRepository) => {
-    const answer = await repo.getAll();
-    return answer;
-  }
-);

@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 export default function BookForm() {
   const navigate = useNavigate();
+  const { carData } = useSelector((state: RootState) => state.cars);
+  const { handleNewCar } = useCars();
 
   const handleNewBook = async (event: SyntheticEvent) => {
     const formRegisterElement: HTMLFormElement =

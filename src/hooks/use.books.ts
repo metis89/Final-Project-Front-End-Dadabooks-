@@ -2,35 +2,52 @@ import { useCallback, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BookRepository } from "../services/book.repository";
 import { AppDispatch, RootState } from "../redux/store";
-import { load } from "../redux/books.slice";
+import {
+  loadBookAsync,
+  createBookAsync,
+  deleteBookAsync,
+} from "../redux/books.slice";
 import { Book } from "../models/book";
+import { url } from "../config";
 
 export function UseBooks() {
-  const { books } = useSelector((state: RootState) => state.books);
   const { token } = useSelector((state: RootState) => state.users);
+  const { bookList } = useSelector((state: RootState) => state.books);
   const dispatch: AppDispatch = useDispatch();
-  const url = "http://localhost:9900/";
+
   const bookRepo: BookRepository = useMemo(
     () => new BookRepository(url, token as string),
-    []
+    [token]
   );
 
   const handleLoadBooks = useCallback(async () => {
-    const books = await bookRepo.getAll();
-    dispatch(load(books));
+    dispatch(loadBookAsync(bookRepo));
   }, [dispatch, bookRepo]);
 
-  const handleAddBook = async (book: Book) => {
-    const books = await bookRepo.create(book);
-    dispatch(load(books));
+  const handleAddBook = async (book: Omit<Book, "id">) => {
+    dispatch(createBookAsync({ repo: bookRepo, book }));
+  };
+
+  // const handleEditBook = async (data: Partial<Book>) => {
+  //   dispatch(editBookAsync({ repo, data }));
+  // };
+
+  const handleDelete = async (id: string) => {
+    dispatch(
+      deleteBookAsync({
+        repo: bookRepo,
+        id,
+      })
+    );
   };
 
   return {
     handleLoadBooks,
     handleAddBook,
-    books,
+    handleDelete,
+    // handleEditBook,
+    bookList,
     bookRepo,
-    url,
   };
 }
 //Con el hook grupamos funciones del estado

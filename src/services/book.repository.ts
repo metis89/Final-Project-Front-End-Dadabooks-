@@ -21,8 +21,8 @@ export class BookRepository extends ApiRepository<Book> {
     return (await data).items;
   }
 
-  async create(item: Omit<Book, "id">): Promise<Book> {
-    const response = await fetch(this.url, {
+  async create(item: FormData): Promise<Book> {
+    const response = await fetch(`${this.url}books`, {
       method: "POST",
       body: JSON.stringify(item),
       headers: {

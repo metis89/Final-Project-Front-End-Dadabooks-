@@ -1,58 +1,46 @@
 import { SyntheticEvent } from "react";
-import { url } from "../../config";
-import Swal from "sweetalert2";
+
+// import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { Header } from "../header/header";
 import "./bookForms.scss";
+import { UseBooks } from "../../hooks/use.books";
 
 export default function BookForm() {
   const navigate = useNavigate();
-  // const { carData } = useSelector((state: RootState) => state.cars);
-  // const { handleNewCar } = useCars();
+  const { handleAddBook } = UseBooks();
 
-  const handleNewBook = async (event: SyntheticEvent) => {
-    const formRegisterElement: HTMLFormElement =
-      event.target as HTMLFormElement;
-
+  const SubmitNewBook = async (event: SyntheticEvent) => {
+    const bookForm: HTMLFormElement = event.target as HTMLFormElement;
     event.preventDefault();
+    console.log("SubmitBook");
 
-    const data = new FormData(formRegisterElement);
+    const data = new FormData(bookForm);
+    await handleAddBook(data);
+    console.log("handle book");
+    // window.location.reload();
 
-    const urlRegister = url + "book/create";
-    const response = await fetch(urlRegister, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("store")}`,
-      },
-      body: data,
-    });
+    // if (state.error) {
+    //   Swal.fire({
+    //     icon: "error",
+    //     text: `${state.error}`,
+    //   });
+    // } else {
+    //   Swal.fire({
+    //     icon: "success",
+    //     text: "Succesfully Registered!",
+    //   });
+    // }
+    // state.bookData = state.book;
+    // delete state.book;
 
-    console.log(data);
-
-    const state = await response.json();
-    console.log(state);
-
-    if (state.error) {
-      Swal.fire({
-        icon: "error",
-        text: `${state.error}`,
-      });
-    } else {
-      Swal.fire({
-        icon: "success",
-        text: "Succesfully Registered!",
-      });
-    }
-
-    state.bookData = state.book;
-    delete state.book;
-    navigate("/main");
+    // navigate("/home");
   };
 
   return (
     <>
       <Header></Header>
-      <form className="book_form" id="form">
+      <form className="book_form" id="form" onSubmit={SubmitNewBook}>
         <h2 className="title_form">Please register a new book</h2>
         <input type="text" placeholder="Title" name="title"></input>
         <input type="text" placeholder="Author" name="author"></input>

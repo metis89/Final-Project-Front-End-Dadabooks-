@@ -7,7 +7,7 @@ import {
   createBookAsync,
   deleteBookAsync,
 } from "../redux/books.slice";
-import { Book } from "../models/book";
+// import { Book } from "../models/book";
 import { url } from "../config";
 
 export function UseBooks() {
@@ -25,8 +25,10 @@ export function UseBooks() {
     dispatch(loadBookAsync(bookRepo));
   }, [dispatch, bookRepo]);
 
-  const handleAddBook = async (book: Omit<Book, "id">) => {
+  const handleAddBook = async (book: FormData) => {
+    console.log("handle add book process");
     dispatch(createBookAsync({ repo: bookRepo, book }));
+    console.log("register book submitted");
   };
 
   // const handleEditBook = async (data: Partial<Book>) => {

@@ -16,7 +16,7 @@ export class ApiRepository<T extends { id: string | number }> {
     return response.json() as Promise<T>;
   }
 
-  async create(item: Partial<T>): Promise<T> {
+  async create(item: FormData): Promise<T> {
     const response = await fetch(this.url, {
       method: "POST",
       body: JSON.stringify(item),

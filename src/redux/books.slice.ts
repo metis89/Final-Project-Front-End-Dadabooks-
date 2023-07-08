@@ -20,7 +20,7 @@ export const loadBookAsync = createAsyncThunk<Book[], BookRepository>(
 
 export const createBookAsync = createAsyncThunk<
   Book,
-  { repo: BookRepository; book: Omit<Book, "id"> }
+  { repo: BookRepository; book: FormData }
 >("books/create", async ({ repo, book }) => {
   const response = await repo.create(book);
   return response;

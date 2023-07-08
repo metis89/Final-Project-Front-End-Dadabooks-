@@ -22,7 +22,6 @@ export function Header() {
   };
 
   const handleRegister = () => {
-    console.log("Register");
     navigate("/register");
   };
 
@@ -30,6 +29,11 @@ export function Header() {
     Swal.fire({ icon: "success", text: "Succesfully logged out!" });
     dispatch(logout());
     localStorage.removeItem(storeName);
+  };
+
+  const handleAddBook = () => {
+    console.log("bookform");
+    navigate("/bookform");
   };
 
   return (
@@ -52,6 +56,9 @@ export function Header() {
           ) : (
             <>
               <div className="user_info user_buttons">
+                <button onClick={handleAddBook} className="add_book_button">
+                  Add Book
+                </button>
                 <button onClick={handleRegister} className="register_button">
                   Register
                 </button>

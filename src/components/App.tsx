@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useUsers } from "../../src/hooks/use.users";
 import { AppRoutes } from "../../src/components/app.routes/App.routes";
 import { store } from "../../src/redux/store";
+import "./App.scss";
 
 // import "/app.scss";
 

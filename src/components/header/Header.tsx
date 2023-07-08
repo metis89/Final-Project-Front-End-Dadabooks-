@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { storeName } from "../../config";
 import { RootState } from "../../redux/store";
 import { logout } from "../../redux/users.slice";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 export function Header() {
@@ -35,7 +36,9 @@ export function Header() {
     <>
       <header className="title">
         <div className="title_name">
-          <h1>DadaBooks</h1>
+          <Link className="title_anchor" to={"/home"}>
+            DadaBooks
+          </Link>
         </div>
         <div className="title_info">
           {token ? (

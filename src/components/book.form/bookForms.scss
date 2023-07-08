@@ -1,0 +1,46 @@
+.book_form {
+  // background-color: rgb(216, 192, 159, 25%);
+  height: 60%;
+  width: 30rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .title_form {
+    color: #eb5757;
+    background-color: none;
+  }
+}
+
+input {
+  background-color: rgb(236, 233, 233);
+  width: 12rem;
+  height: 2rem;
+  border-radius: 1px 1rem 1px 1rem;
+  margin: 1rem;
+  border: 2px solid #eb5757;
+}
+
+input:hover {
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+input::placeholder {
+  padding-left: 20px;
+  color: rgb(40, 6, 6);
+}
+
+.subtitle {
+  color: aliceblue;
+}
+
+a {
+  color: rgba(0, 255, 229, 1) 100%;
+}
+
+button {
+  background-color: rgb(235, 87, 87);
+  color: antiquewhite;
+}

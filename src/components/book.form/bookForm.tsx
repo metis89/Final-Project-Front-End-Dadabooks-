@@ -2,11 +2,13 @@ import { SyntheticEvent } from "react";
 import { url } from "../../config";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { Header } from "../header/header";
+import "./bookForms.scss";
 
 export default function BookForm() {
   const navigate = useNavigate();
-  const { carData } = useSelector((state: RootState) => state.cars);
-  const { handleNewCar } = useCars();
+  // const { carData } = useSelector((state: RootState) => state.cars);
+  // const { handleNewCar } = useCars();
 
   const handleNewBook = async (event: SyntheticEvent) => {
     const formRegisterElement: HTMLFormElement =
@@ -48,16 +50,19 @@ export default function BookForm() {
   };
 
   return (
-    <form className="book-form" id="form">
-      <h2 className="title_form">Please register a new book</h2>
-      <input type="text" placeholder="Title" name="title"></input>
-      <input type="text" placeholder="Author" name="author"></input>
-      <input type="text" placeholder="Year" name="year"></input>
-      <input type="text" placeholder="Synopsis" name="synopsis"></input>
-      <input type="file" placeholder="Image" name="image"></input>
-      <button type="submit" className="login_button">
-        SUBMIT
-      </button>
-    </form>
+    <>
+      <Header></Header>
+      <form className="book_form" id="form">
+        <h2 className="title_form">Please register a new book</h2>
+        <input type="text" placeholder="Title" name="title"></input>
+        <input type="text" placeholder="Author" name="author"></input>
+        <input type="text" placeholder="Year" name="year"></input>
+        <input type="text" placeholder="Synopsis" name="synopsis"></input>
+        <input type="file" placeholder="Image" name="image"></input>
+        <button type="submit" className="submit_book_button">
+          SUBMIT
+        </button>
+      </form>
+    </>
   );
 }

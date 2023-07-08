@@ -14,7 +14,7 @@ export function Header() {
 
   const handleUser = () => {
     if (token) {
-      runLogout();
+      handleLogout();
       window.location.reload();
     } else {
       navigate("/login");
@@ -25,7 +25,7 @@ export function Header() {
     navigate("/register");
   };
 
-  const runLogout = () => {
+  const handleLogout = () => {
     Swal.fire({ icon: "success", text: "Succesfully logged out!" });
     dispatch(logout());
     localStorage.removeItem(storeName);
@@ -48,7 +48,7 @@ export function Header() {
           {token ? (
             <>
               <div className="user_info">
-                <button onClick={handleUser} className="logout_button">
+                <button onClick={handleLogout} className="logout_button">
                   Logout
                 </button>
               </div>

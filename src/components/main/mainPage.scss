@@ -1,13 +1,26 @@
-.main_page_title {
-  color: #eb5757;
+.title {
+  @media (max-width: 920px) {
+    .title1 {
+      display: none;
+    }
+  }
+
+  @media (min-width: 920px) {
+    .title2 {
+      display: none;
+    }
+  }
 }
 
 .main_links {
-  height: 60%;
-  width: 30rem;
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
+
+  div {
+    margin: 10px;
+  }
 }

@@ -2,8 +2,8 @@ import { SyntheticEvent } from "react";
 import { useUsers } from "../../hooks/use.users";
 import { User } from "../../models/user";
 import { useNavigate } from "react-router-dom";
-
 import { Header } from "../header/header";
+import "./register.scss";
 
 export default function Register() {
   const { handleRegister } = useUsers();

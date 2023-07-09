@@ -55,5 +55,6 @@ export class BookRepository extends ApiRepository<Book> {
       body: JSON.stringify({ id }),
     });
     return response.ok;
+    //
   }
 }

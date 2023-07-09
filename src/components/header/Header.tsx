@@ -29,6 +29,7 @@ export function Header() {
     Swal.fire({ icon: "success", text: "Succesfully logged out!" });
     dispatch(logout());
     localStorage.removeItem(storeName);
+    window.location.reload();
   };
 
   const handleAddBook = () => {
@@ -48,6 +49,9 @@ export function Header() {
           {token ? (
             <>
               <div className="user_info">
+                <button onClick={handleAddBook} className="add_book_button">
+                  Add Book
+                </button>
                 <button onClick={handleLogout} className="logout_button">
                   Logout
                 </button>
@@ -56,9 +60,6 @@ export function Header() {
           ) : (
             <>
               <div className="user_info user_buttons">
-                <button onClick={handleAddBook} className="add_book_button">
-                  Add Book
-                </button>
                 <button onClick={handleRegister} className="register_button">
                   Register
                 </button>

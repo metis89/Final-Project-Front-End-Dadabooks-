@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState, store } from "../redux/store";
 import { useMemo } from "react";
 import { User } from "../models/user";
-import { loginUserAsync, registerUserAsync } from "../redux/thunks";
+import { loginUserAsync, registerUserAsync } from "../redux/user.thunk";
 import { UserRepository } from "../services/user.repository";
 import { ac } from "../redux/users.slice";
 

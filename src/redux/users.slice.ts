@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { loginUserAsync, registerUserAsync } from "./thunks";
+import { loginUserAsync, registerUserAsync } from "./user.thunk";
 import { User } from "../models/user";
 
 export type UserLogged = {

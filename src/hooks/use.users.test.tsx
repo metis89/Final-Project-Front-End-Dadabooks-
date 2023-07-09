@@ -8,7 +8,7 @@ import { MemoryRouter as Router } from "react-router-dom";
 import { UserRepository } from "../services/user.repository";
 import userEvent from "@testing-library/user-event";
 import { ac } from "../redux/users.slice";
-import { loginUserAsync, registerUserAsync } from "../redux/thunks";
+import { loginUserAsync, registerUserAsync } from "../redux/user.thunk";
 
 const mockUser = {
   userName: "Ernestina",

@@ -6,7 +6,7 @@ import {
   loadBookAsync,
   createBookAsync,
   deleteBookAsync,
-} from "../redux/books.slice";
+} from "../redux/book.thunk";
 // import { Book } from "../models/book";
 import { url } from "../config";
 

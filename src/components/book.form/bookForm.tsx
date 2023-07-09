@@ -41,7 +41,7 @@ export default function BookForm() {
     <>
       <Header></Header>
       <form className="book_form" id="form" onSubmit={SubmitNewBook}>
-        <h2 className="title_form">Please register a new book</h2>
+        <h1 className="title_form">Please register a new book</h1>
         <input type="text" placeholder="Title" name="title"></input>
         <input type="text" placeholder="Author" name="author"></input>
         <input type="text" placeholder="Year" name="year"></input>

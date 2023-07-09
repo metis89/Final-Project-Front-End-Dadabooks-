@@ -35,13 +35,13 @@ export function UseBooks() {
   //   dispatch(editBookAsync({ repo, data }));
   // };
 
-  const handleLoadFiltered = useCallback(
-    async (book: string) => {
-      // loadedBooks = await bookRepo.getFiltered(book);
-      // dispatch(loadBookAsync);
-    },
-    [bookRepo]
-  );
+  // const handleLoadFiltered = useCallback(
+  //   async (book: string) => {
+  //     loadedBooks = await bookRepo.getFiltered(book);
+  //     dispatch(loadBookAsync);
+  //   },
+  //   [bookRepo]
+  // );
 
   const handleDelete = async (id: string) => {
     dispatch(
@@ -56,14 +56,9 @@ export function UseBooks() {
     handleLoadBooks,
     handleAddBook,
     handleDelete,
-    handleLoadFiltered,
+    // handleLoadFiltered,
     // handleEditBook,
     bookList,
     bookRepo,
   };
 }
-//Con el hook grupamos funciones del estado
-
-//1. nos coge libros del back y espero a que me lleguen --> la comunicacion con el back es asincrono
-//2. los libros que llegan se guardardan en el estado --> el guardado es sincrono (lo hacemos a nivel local)
-//3. El estado preparado y lo rellena con el array de los instrumentos gracias al reducer

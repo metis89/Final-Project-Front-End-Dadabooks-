@@ -45,6 +45,7 @@ export default function BookForm() {
         <input type="text" placeholder="Title" name="title"></input>
         <input type="text" placeholder="Author" name="author"></input>
         <input type="text" placeholder="Year" name="year"></input>
+        <input type="text" placeholder="Genre" name="genre"></input>
         <input type="text" placeholder="Synopsis" name="synopsis"></input>
         <input type="file" placeholder="Image" name="image"></input>
         <button type="submit" className="submit_book_button">

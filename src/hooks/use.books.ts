@@ -14,7 +14,7 @@ export function UseBooks() {
   const { token } = useSelector((state: RootState) => state.users);
   const { bookList } = useSelector((state: RootState) => state.books);
   const dispatch: AppDispatch = useDispatch();
-
+  // let loadedBooks: Book[] = useMemo(() => [], []);
   const bookRepo: BookRepository = useMemo(
     () => new BookRepository(url, token as string),
     [token]
@@ -35,6 +35,14 @@ export function UseBooks() {
   //   dispatch(editBookAsync({ repo, data }));
   // };
 
+  const handleLoadFiltered = useCallback(
+    async (book: string) => {
+      // loadedBooks = await bookRepo.getFiltered(book);
+      // dispatch(loadBookAsync);
+    },
+    [bookRepo]
+  );
+
   const handleDelete = async (id: string) => {
     dispatch(
       deleteBookAsync({
@@ -48,6 +56,7 @@ export function UseBooks() {
     handleLoadBooks,
     handleAddBook,
     handleDelete,
+    handleLoadFiltered,
     // handleEditBook,
     bookList,
     bookRepo,

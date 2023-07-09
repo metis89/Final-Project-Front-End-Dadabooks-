@@ -32,7 +32,7 @@ export default function Register() {
     <>
       <Header></Header>
 
-      <div className="form">
+      <div className="register_form">
         <h1>Get registered</h1>
         <form onSubmit={handleSubmit}>
           <div>

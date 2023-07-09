@@ -51,13 +51,13 @@ export default function mainPage() {
             </Link>
           </div>
         </div>
-        {/* <footer>
+        <footer>
           <img
             src="../../public/footer.png"
             alt="Just a bit of decoration for the footer"
             className="footer"
           />
-        </footer> */}
+        </footer>
       </>
     </>
   );

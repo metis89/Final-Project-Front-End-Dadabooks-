@@ -101,7 +101,7 @@ describe("Given the AppRoutes component", () => {
     const MockedComponentBookForm = jest
       .fn()
       .mockReturnValue(<h2>Please register a new book</h2>);
-    jest.mock("../form/bookForm", () => MockedComponentBookForm);
+    jest.mock("../book.form/bookForm", () => MockedComponentBookForm);
     let element: HTMLElement;
 
     beforeEach(async () => {

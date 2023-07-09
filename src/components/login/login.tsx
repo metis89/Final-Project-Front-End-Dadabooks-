@@ -11,15 +11,16 @@ export default function Login() {
 
   const handleSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
-    console.log("LOGIN");
+    // console.log("LOGIN");
     const element = event.target as HTMLFormElement;
     const inputs = element.querySelectorAll("input");
+
     const loggedUser = {
       user: inputs[0].value,
       password: inputs[1].value,
     } as Partial<User>;
     handleLogin(loggedUser);
-    console.log("handle logged");
+    // console.log("handle logged");
     element.reset();
     navigate("/home");
   };

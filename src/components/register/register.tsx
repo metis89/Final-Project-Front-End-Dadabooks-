@@ -32,22 +32,24 @@ export default function Register() {
     <>
       <Header></Header>
 
-      <h2>Get registered</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="user">User Name: </label>
-          <input type="text" id="user" name="user" />
-        </div>
-        <div>
-          <label htmlFor="email">Email: </label>
-          <input type="email" id="email" name="email" />
-        </div>
-        <div>
-          <label htmlFor="password">Password: </label>
-          <input type="password" id="password" name="password" />
-        </div>
-        <button type="submit">Sign Up</button>
-      </form>
+      <div className="form">
+        <h1>Get registered</h1>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="user">User Name: </label>
+            <input type="text" id="user" name="user" />
+          </div>
+          <div>
+            <label htmlFor="email">Email: </label>
+            <input type="email" id="email" name="email" />
+          </div>
+          <div>
+            <label htmlFor="password">Password: </label>
+            <input type="password" id="password" name="password" />
+          </div>
+          <button type="submit">Sign Up</button>
+        </form>
+      </div>
     </>
   );
 }

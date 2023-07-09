@@ -1,9 +1,7 @@
 .form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 70vh;
+  h1 {
+    margin-top: 100px;
+  }
 
   form {
     background: linear-gradient(
@@ -14,6 +12,9 @@
     padding: 2em;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
 
     input {
       padding: 10px;

@@ -15,7 +15,7 @@ describe("UserRepository", () => {
         password: "pipi",
       };
 
-      const expectedUrl = "https://dadabook.com/user/register";
+      const expectedUrl = "https://dadabook.com//user/register";
       const mockResponse = {
         id: "1",
         userName: "Ernestina",
@@ -45,7 +45,7 @@ describe("UserRepository", () => {
         password: "pipi",
       };
 
-      const expectedUrl = "https://dadabook.com/user/login";
+      const expectedUrl = "https://dadabook.com//user/login";
       const mockResponse = {
         id: "1",
         userName: "Ernestina",

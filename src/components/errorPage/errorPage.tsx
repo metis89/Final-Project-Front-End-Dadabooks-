@@ -2,7 +2,13 @@ export default function ErrorPage() {
   return (
     <>
       <div className="loaded-route">
-        <h1 className="home_title">Error 404</h1>
+        <h1>Error 404</h1>
+        <img
+          src="../../public/error404.png"
+          width="900"
+          alt="Error 404"
+          className="error404"
+        />
       </div>
     </>
   );

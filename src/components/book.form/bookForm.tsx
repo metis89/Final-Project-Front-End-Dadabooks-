@@ -18,23 +18,8 @@ export default function BookForm() {
     const data = new FormData(bookForm);
     await handleAddBook(data);
     console.log("handle book");
-    // window.location.reload();
 
-    // if (state.error) {
-    //   Swal.fire({
-    //     icon: "error",
-    //     text: `${state.error}`,
-    //   });
-    // } else {
-    //   Swal.fire({
-    //     icon: "success",
-    //     text: "Succesfully Registered!",
-    //   });
-    // }
-    // state.bookData = state.book;
-    // delete state.book;
-
-    // navigate("/home");
+    navigate("/home");
   };
 
   return (

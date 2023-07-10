@@ -54,13 +54,15 @@ export function Header() {
         <div className="title_info">
           {token ? (
             <>
-              <div className="user_info">
-                <button onClick={handleAddBook} className="add_book_button">
-                  Add Book
-                </button>
-                <button onClick={handleLogout} className="logout_button">
-                  Logout
-                </button>
+              <div className="header_buttons">
+                <button
+                  onClick={handleAddBook}
+                  className="new_book_button"
+                ></button>
+                <button
+                  onClick={handleLogout}
+                  className="logout_button"
+                ></button>
               </div>
             </>
           ) : (

@@ -61,7 +61,7 @@ export default function Home() {
 
       <div className="home_page">
         <h1>New Books</h1>
-        <ul>
+        <ul className="book_list">
           {bookList.map((book) => (
             <BookCard item={book} key={book.id}></BookCard>
           ))}

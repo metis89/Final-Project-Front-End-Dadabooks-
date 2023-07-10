@@ -32,18 +32,6 @@ export class BookRepository extends ApiRepository<Book> {
     return response.json() as Promise<Book>;
   }
 
-  // async update(id: Book["id"], item: Partial<Book>): Promise<Book> {
-  //   const response = await fetch(this.url + (id as string), {
-  //     method: "PATCH",
-  //     body: JSON.stringify(item),
-  //     headers: {
-  //       Authorization: "Bearer " + this.token,
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
-  //   return response.json() as Promise<Book>;
-  // }
-
   async delete(id: Book["id"]): Promise<boolean> {
     const response = await fetch(this.url + "books/" + (id as string), {
       method: "DELETE",

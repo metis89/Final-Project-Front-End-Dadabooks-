@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { Header } from "../header/header";
 import { useNavigate } from "react-router-dom";
 import { SyntheticEvent } from "react";
+import "./book.detail.scss";
 
 export default function BookDetail() {
   const { bookList, handleDelete } = UseBooks();
@@ -26,7 +27,7 @@ export default function BookDetail() {
   return (
     <>
       <Header></Header>
-      <li className="books-card">
+      <li className="book_detail">
         <img src={item.image.url} width={"200"} alt="book-image" />
         <p className={item.title}>{item.title}</p>
         <p className={item.author}>{item.author}</p>

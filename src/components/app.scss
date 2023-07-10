@@ -1,19 +1,19 @@
 #root {
   min-height: 100vh;
   margin: 0 auto;
-  padding-top: 0;
-  padding-bottom: 0;
+  // padding-top: 0;
+  // padding-bottom: 0;
   text-align: center;
   position: relative;
 }
 
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: white;
-}
+// ul {
+//   list-style-type: none;
+//   margin: 0;
+//   padding: 0;
+//   overflow: hidden;
+//   background-color: white;
+// }
 
 html {
   min-height: 100vh;
@@ -22,15 +22,6 @@ html {
   background-size: cover;
   font-family: "Playfair Display", serif;
   font-family: "Special Elite", cursive;
-}
-
-.loaded-route {
-  flex-direction: column;
-  display: flex;
-  min-height: 85vh;
-  justify-content: center;
-  align-items: center;
-  font-weight: 900;
 }
 
 body {
@@ -44,5 +35,5 @@ header {
   justify-content: center;
   align-items: center;
 
-  padding: 10px;
+  padding: 15px;
 }

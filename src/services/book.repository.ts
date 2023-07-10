@@ -44,16 +44,17 @@ export class BookRepository extends ApiRepository<Book> {
   //   return response.json() as Promise<Book>;
   // }
 
-  async delete(id: Book["id"]) {
-    const response = await fetch(this.url + (id as string), {
+  async delete(id: Book["id"]): Promise<boolean> {
+    const response = await fetch(this.url + "books/" + (id as string), {
       method: "DELETE",
       headers: {
         Authorization: "Bearer " + this.token,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ id }),
     });
-    return response.ok;
+    if (response.ok) return true;
+    return false;
+
     //
   }
 }

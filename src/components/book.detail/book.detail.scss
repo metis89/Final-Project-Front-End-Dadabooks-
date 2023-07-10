@@ -2,3 +2,13 @@
 //   padding-left: 100px;
 //   padding-right: 100px;
 // }
+
+.delete_button {
+  background-image: url(../../public/bin.png);
+  background-size: cover;
+  background-color: transparent;
+  border-radius: 4px;
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+}

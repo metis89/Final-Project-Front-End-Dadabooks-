@@ -9,6 +9,7 @@ import {
 } from "../redux/book.thunk";
 // import { Book } from "../models/book";
 import { url } from "../config";
+import { Book } from "../models/book";
 
 export function UseBooks() {
   const { token } = useSelector((state: RootState) => state.users);
@@ -43,8 +44,8 @@ export function UseBooks() {
   //   [bookRepo]
   // );
 
-  const handleDelete = async (id: string) => {
-    dispatch(
+  const handleDelete = async (id: Book["id"]) => {
+    await dispatch(
       deleteBookAsync({
         repo: bookRepo,
         id,

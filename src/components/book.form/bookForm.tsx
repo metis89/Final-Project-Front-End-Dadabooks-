@@ -25,7 +25,12 @@ export default function BookForm() {
   return (
     <>
       <Header></Header>
-      <form className="book_form" id="form" onSubmit={SubmitNewBook}>
+      <form
+        className="book_form"
+        id="form"
+        onSubmit={SubmitNewBook}
+        aria-label="form"
+      >
         <h1 className="title_form">Please register a new book</h1>
         <input type="text" placeholder="Title" name="title"></input>
         <input type="text" placeholder="Author" name="author"></input>

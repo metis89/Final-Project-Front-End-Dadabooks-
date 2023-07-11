@@ -10,10 +10,17 @@
   }
 
   .book_list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    flex-direction: row-reverse;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 2em;
+    margin: 0.1rem;
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    @media (max-width: 800px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
 
     a {
       display: flex;

@@ -1,5 +1,4 @@
-.login-form {
-  // background-color: rgb(216, 192, 159, 25%);
+.login {
   height: 60%;
   width: 30rem;
   border-radius: 1rem;
@@ -8,9 +7,18 @@
   justify-content: center;
   align-items: center;
 
-  .title_form {
-    color: white;
-    background-color: none;
+  h1 {
+    margin-top: 100px;
+    color: #eb5757;
+  }
+  .login-form {
+    border-radius: 25px 0 25px 0;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    height: 70vh;
   }
 }
 
@@ -18,9 +26,9 @@ input {
   background-color: rgb(236, 233, 233);
   width: 12rem;
   height: 2rem;
-  border-radius: 1px 1rem 1px 1rem;
+  border-radius: 8px;
   margin: 1rem;
-  border: 2px solid rgb(255, 255, 255);
+  border: 2px solid rgb(222, 113, 113);
 }
 
 input:hover {

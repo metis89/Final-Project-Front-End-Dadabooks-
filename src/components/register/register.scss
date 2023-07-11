@@ -15,6 +15,12 @@
 
     input {
       padding: 10px;
+      background-color: rgb(236, 233, 233);
+      width: 12rem;
+      height: 2rem;
+      border-radius: 1px;
+      margin: 1rem;
+      border: 2px solid rgb(222, 113, 113);
     }
     input:hover {
       background-color: rgba(255, 0, 0, 0.2);

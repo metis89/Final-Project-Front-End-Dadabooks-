@@ -9,8 +9,9 @@ import "./book.detail.scss";
 export default function BookDetail() {
   const { bookList, handleDelete } = UseBooks();
   const { id } = useParams();
-  const item: Book = bookList.find((item) => item.id === id) as Book;
   const navigate = useNavigate();
+
+  const item: Book = bookList.find((item) => item.id === id) as Book;
 
   const handleDeleteBook = (event: SyntheticEvent) => {
     event.preventDefault();

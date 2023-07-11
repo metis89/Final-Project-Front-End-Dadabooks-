@@ -17,5 +17,7 @@ export default {
     "<rootDir>/src/vite-env.d.ts",
     "<rootDir>/src/components/form",
     "<rootDir>/src/config.ts",
+    "<rootDir>/src/services/api.repository.ts",
+    "<rootDir>/src/components/App.tsx",
   ],
 };

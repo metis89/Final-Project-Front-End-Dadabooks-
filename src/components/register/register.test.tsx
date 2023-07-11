@@ -26,12 +26,6 @@ describe("Given the register component", () => {
       );
     });
 
-    // test("should render register form", () => {
-    //   const form = screen.getByRole("heading", { name: "Get registered" });
-
-    //   expect(form).toBeInTheDocument();
-    // });
-
     test("Then the user should fill in the form and click on the 'Sign Up' button", () => {
       const usernameInput = screen.getByLabelText("User Name:");
       const emailInput = screen.getByLabelText("Email:");

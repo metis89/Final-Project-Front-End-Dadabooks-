@@ -3,6 +3,8 @@ import { MemoryRouter as Router } from "react-router-dom";
 import "@testing-library/jest-dom";
 import { BookCard } from "./book.card";
 import { Book } from "../../models/book";
+import { Provider } from "react-redux";
+import { store } from "../../redux/store";
 
 const mockBook = {
   id: "1",
@@ -16,7 +18,9 @@ describe("Given Card component", () => {
     beforeEach(() => {
       render(
         <Router>
-          <BookCard item={mockBook as Book}></BookCard>
+          <Provider store={store}>
+            <BookCard item={mockBook as Book}></BookCard>
+          </Provider>
         </Router>
       );
     });

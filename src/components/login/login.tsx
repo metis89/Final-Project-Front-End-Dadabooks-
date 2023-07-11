@@ -28,25 +28,15 @@ export default function Login() {
   return (
     <>
       <Header></Header>
-      <div className="form">
-        <div className="loaded-route">
-          <h1 className="title_form">LOGIN</h1>
-          <form className="login-form" onSubmit={handleSubmit}>
-            <input
-              type="text"
-              placeholder="Username / Email"
-              name="user"
-            ></input>
-            <input
-              type="password"
-              placeholder="Password"
-              name="password"
-            ></input>
-            <button type="submit" className="login_button">
-              SUBMIT
-            </button>
-          </form>
-        </div>
+      <div className="login">
+        <h1 className="title_form">LOGIN</h1>
+        <form className="login-form" onSubmit={handleSubmit} aria-label="form">
+          <input type="text" placeholder="Username / Email" name="user"></input>
+          <input type="password" placeholder="Password" name="password"></input>
+          <button type="submit" className="login_button">
+            SUBMIT
+          </button>
+        </form>
       </div>
     </>
   );

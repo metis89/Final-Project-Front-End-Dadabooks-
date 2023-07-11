@@ -67,7 +67,7 @@ export function Header() {
             </>
           ) : (
             <>
-              <div className="user_info user_buttons">
+              <div className="header_buttons_NO_token">
                 <button
                   onClick={handleRegister}
                   className="register_button"

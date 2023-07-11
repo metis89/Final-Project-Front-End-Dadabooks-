@@ -2,25 +2,25 @@ import { render, screen } from "@testing-library/react";
 import { MemoryRouter as Router } from "react-router-dom";
 import "@testing-library/jest-dom";
 import BookDetail from "./book.detail";
-
 import { Provider } from "react-redux";
 import { store } from "../../redux/store";
+import { UseBooks } from "../../hooks/use.books";
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
   useParams: jest.fn().mockReturnValue({ id: "1" }),
+  useNavigate: jest.fn().mockReturnValue(jest.fn()),
+}));
+
+jest.mock("../../config.ts", () => ({
+  url: "",
 }));
 
 jest.mock("../../hooks/use.books", () => ({
-  useBook: jest.fn().mockReturnValue({
+  UseBooks: jest.fn().mockReturnValue({
     books: [
       {
         id: "1",
-        title: "Walden",
-        author: "Thoreau",
-        year: 1854,
-        genre: "None-fiction",
-        synopsis: "blabla",
         image: {
           url: "walden.jpg",
         },
@@ -28,10 +28,6 @@ jest.mock("../../hooks/use.books", () => ({
       {
         id: "2",
         title: "Alice",
-        author: "Carroll",
-        year: 1954,
-        genre: "None-fiction",
-        synopsis: "blabla",
         image: {
           url: "alice.jpg",
         },
@@ -43,13 +39,15 @@ jest.mock("../../hooks/use.books", () => ({
 
 jest.mock("../../hooks/use.users", () => ({
   useUsers: jest.fn().mockReturnValue({
-    token: "testtoken",
+    token: "123",
   }),
 }));
 
-jest.mock("../../config", () => ({
-  url: "",
-}));
+beforeEach(() => {
+  (UseBooks as jest.Mock).mockReturnValue({
+    handleLoadBooks: jest.fn(),
+  });
+});
 
 describe("Given a BookDetail component", () => {
   describe("When it is intstantiate", () => {
@@ -62,7 +60,7 @@ describe("Given a BookDetail component", () => {
         </Router>
       );
     });
-    test("Then it should show film details on the screen", () => {
+    test("Then it should show book details on the screen", () => {
       const bookDetail = screen.getByText("Walden");
       expect(bookDetail).toBeInTheDocument();
     });

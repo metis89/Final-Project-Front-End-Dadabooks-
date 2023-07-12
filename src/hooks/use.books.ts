@@ -15,7 +15,7 @@ export function UseBooks() {
   const { token } = useSelector((state: RootState) => state.users);
   const { bookList } = useSelector((state: RootState) => state.books);
   const dispatch: AppDispatch = useDispatch();
-  // let loadedBooks: Book[] = useMemo(() => [], []);
+
   const bookRepo: BookRepository = useMemo(
     () => new BookRepository(url, token as string),
     [token]

@@ -1,4 +1,3 @@
-/* istanbul ignore next */
 import { Link } from "react-router-dom";
 import "./mainPage.scss";
 

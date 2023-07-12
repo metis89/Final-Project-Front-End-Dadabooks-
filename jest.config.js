@@ -14,10 +14,7 @@ export default {
   collectCoverageFrom: ["src/**/*.{ts,tsx}"],
   coveragePathIgnorePatterns: [
     "<rootDir>/src/vite-env.d.ts",
-    "<rootDir>/src/components/form",
+    "<rootDir>/src/main.tsx",
     "<rootDir>/src/config.ts",
-    "<rootDir>/src/services/api.repository.ts",
-    "<rootDir>/src/components/book.detail/book.detail.tsx",
-    "<rootDir>/src/components/App.tsx",
   ],
 };

@@ -13,40 +13,33 @@ jest.mock("react-router-dom", () => ({
   useNavigate: jest.fn().mockReturnValue(jest.fn()),
 }));
 
-jest.mock("../../hooks/use.books", () => ({
-  UseBooks: jest.fn().mockReturnValue({
-    bookList: [
-      {
-        id: "1",
-        image: {
-          url: "walden.jpg",
-        },
-      },
-      {
-        id: "2",
-        title: "Alice",
-        image: {
-          url: "alice.jpg",
-        },
-      },
-    ],
-  }),
-}));
+jest.mock("../../hooks/use.books");
 
 jest.mock("../../config.ts", () => ({
   url: "",
-}));
-
-jest.mock("../../hooks/use.users", () => ({
-  useUsers: jest.fn().mockReturnValue({
-    token: "123",
-  }),
 }));
 
 describe("Given a BookDetail component", () => {
   beforeEach(() => {
     (UseBooks as jest.Mock).mockReturnValue({
       handleLoadBooks: jest.fn(),
+      handleDelete: jest.fn(),
+      bookList: [
+        {
+          id: "1",
+          title: "Walden",
+          image: {
+            url: "walden.jpg",
+          },
+        },
+        {
+          id: "2",
+          title: "Alice",
+          image: {
+            url: "alice.jpg",
+          },
+        },
+      ],
     });
     render(
       <Router initialEntries={["/detail/1"]}>
@@ -63,8 +56,8 @@ describe("Given a BookDetail component", () => {
     });
 
     test("Then the handleDeleteBook should be called when delete_button is clicked", async () => {
-      const deleteButton = screen.getAllByRole("button");
-      await userEvent.click(deleteButton[1]);
+      const deleteButton = screen.getByRole("button", { name: "delete" });
+      await userEvent.click(deleteButton);
       expect(UseBooks().handleDelete).toHaveBeenCalled();
     });
   });

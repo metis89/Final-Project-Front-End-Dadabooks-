@@ -1,10 +1,9 @@
-/* istanbul ignore next */
-import { Book } from "../../models/book";
-import { UseBooks } from "../../hooks/use.books";
-import { useParams } from "react-router-dom";
-import { Header } from "../header/header";
-import { useNavigate } from "react-router-dom";
 import { SyntheticEvent } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { Book } from "../../models/book";
+
+import { UseBooks } from "../../hooks/use.books";
+import { Header } from "../header/header";
 import "./book.detail.scss";
 
 export default function BookDetail() {
@@ -16,7 +15,7 @@ export default function BookDetail() {
 
   const handleDeleteBook = (event: SyntheticEvent) => {
     event.preventDefault();
-    console.log("deleting...");
+    console.log("deleting...", id);
     if (id) {
       handleDelete(id);
       console.log("Book deleted");
@@ -36,7 +35,11 @@ export default function BookDetail() {
         <p className={`${item.year}`}>{item.year}</p>
         <p className={item.genre}>{item.genre}</p>
         <p className={item.synopsis}>{item.synopsis}</p>
-        <button className="delete_button" onClick={handleDeleteBook}></button>
+        <button
+          aria-label="delete"
+          className="delete_button"
+          onClick={handleDeleteBook}
+        ></button>
       </li>
     </>
   );

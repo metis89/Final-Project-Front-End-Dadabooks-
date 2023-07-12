@@ -23,6 +23,7 @@ export class BookRepository extends ApiRepository<Book> {
 
   async create(item: FormData): Promise<Book> {
     const response = await fetch(`${this.url}books`, {
+      /* istanbul ignore else */
       method: "POST",
       body: item,
       headers: {

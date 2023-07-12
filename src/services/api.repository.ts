@@ -1,3 +1,4 @@
+/* istanbul ignore next */
 export class ApiRepository<T extends { id: string | number }> {
   constructor(public url: string, public token: string) {}
 

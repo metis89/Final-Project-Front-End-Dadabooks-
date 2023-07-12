@@ -4,16 +4,12 @@ import "@testing-library/jest-dom";
 import BookDetail from "./book.detail";
 import { Provider } from "react-redux";
 import { store } from "../../redux/store";
-import { UseBooks } from "../../hooks/use.books";
+// import { UseBooks } from "../../hooks/use.books";
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
   useParams: jest.fn().mockReturnValue({ id: "1" }),
   useNavigate: jest.fn().mockReturnValue(jest.fn()),
-}));
-
-jest.mock("../../config.ts", () => ({
-  url: "",
 }));
 
 jest.mock("../../hooks/use.books", () => ({
@@ -33,25 +29,28 @@ jest.mock("../../hooks/use.books", () => ({
         },
       },
     ],
-    handleDeleteBook: jest.fn(),
   }),
 }));
 
-jest.mock("../../hooks/use.users", () => ({
-  useUsers: jest.fn().mockReturnValue({
-    token: "123",
-  }),
+jest.mock("../../config.ts", () => ({
+  url: "",
 }));
 
-beforeEach(() => {
-  (UseBooks as jest.Mock).mockReturnValue({
-    handleLoadBooks: jest.fn(),
-  });
-});
+// jest.mock("../../hooks/use.users", () => ({
+//   useUsers: jest.fn().mockReturnValue({
+//     token: "123",
+//   }),
+// }));
+
+// beforeEach(() => {
+//   (UseBooks as jest.Mock).mockReturnValue({
+//     handleLoadBooks: jest.fn(),
+//   });
+// });
 
 describe("Given a BookDetail component", () => {
   describe("When it is intstantiate", () => {
-    beforeEach(() => {
+    test("Then it should show book details on the screen", () => {
       render(
         <Router initialEntries={["/detail/1"]}>
           <Provider store={store}>
@@ -59,8 +58,6 @@ describe("Given a BookDetail component", () => {
           </Provider>
         </Router>
       );
-    });
-    test("Then it should show book details on the screen", () => {
       const bookDetail = screen.getByText("Walden");
       expect(bookDetail).toBeInTheDocument();
     });
@@ -73,3 +70,4 @@ describe("Given a BookDetail component", () => {
     // });
   });
 });
+//

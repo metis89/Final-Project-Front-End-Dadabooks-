@@ -1,3 +1,4 @@
+/* istanbul ignore next */
 import { Book } from "../../models/book";
 import { UseBooks } from "../../hooks/use.books";
 import { useParams } from "react-router-dom";

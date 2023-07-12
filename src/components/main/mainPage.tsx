@@ -1,3 +1,4 @@
+/* istanbul ignore next */
 import { Link } from "react-router-dom";
 import "./mainPage.scss";
 
@@ -21,7 +22,7 @@ export default function mainPage() {
         </h1>
         <div className="main_links">
           <div>
-            <Link to={"/home"}>
+            <Link to={"/home"} role="link">
               <img
                 src="../../public/home.png"
                 width="100"

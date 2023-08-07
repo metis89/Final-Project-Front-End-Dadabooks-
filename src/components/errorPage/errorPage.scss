@@ -1,0 +1,10 @@
+.loaded-route {
+  margin-top: 50px;
+  img {
+    margin-top: 10px;
+    @media (max-width: 920px) {
+      width: 350px;
+      margin-right: 0px;
+    }
+  }
+}

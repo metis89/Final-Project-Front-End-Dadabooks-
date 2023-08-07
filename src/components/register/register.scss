@@ -27,24 +27,16 @@
     }
 
     button {
-      all: unset;
-      width: 100px;
-      height: 30px;
-      font-size: 16px;
-      background: transparent;
+      background-color: rgb(235, 87, 87);
+      color: antiquewhite;
+      border-radius: 5px;
+      font-size: 20px;
+      margin-top: 30px;
+      margin-left: 30px;
+    }
 
-      position: relative;
-      color: black;
-      cursor: pointer;
-      z-index: 1;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      white-space: nowrap;
-      user-select: none;
-      -webkit-user-select: none;
-      touch-action: manipulation;
+    .email_div {
+      margin-left: 32px;
     }
   }
 }

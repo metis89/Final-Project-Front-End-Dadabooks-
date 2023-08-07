@@ -62,25 +62,4 @@ describe("When given the header component", () => {
       expect(headerElement[0]).toBeInTheDocument();
     });
   });
-
-  ///////////////////
-  //   describe("when the logut button is clicked", () => {
-  //     beforeEach(() => {
-  //       logout = jest.fn();
-  //       (useDispatch as jest.Mock).mockReturnValue(logout);
-
-  //       usersMock = {
-  //         extraInfo: {
-  //           token: "123456",
-  //         },
-  //       };
-  //       (useSelector as jest.Mock).mockReturnValue(usersMock);
-  //     });
-  //     test("then logout handler should be called", () => {
-  //       render(<Profile />);
-  //       const element = screen.getByRole("button");
-  //       fireEvent.click(element);
-  //       expect(handlerLogout).toHaveBeenCalled();
-  //     });
-  //   });
 });

@@ -6,9 +6,6 @@ const goodFetch = (mock: any) => {
     json: jest.fn().mockResolvedValue(mock),
   });
 };
-// const badFetch = () => {
-//   global.fetch = jest.fn().mockResolvedValue("Test error");
-// };
 
 describe("BookRepository", () => {
   let bookRepository: BookRepository;
@@ -46,39 +43,6 @@ describe("BookRepository", () => {
       expect(response).toEqual(mockResponse.items);
     });
   });
-
-  // describe("When calling the create method", () => {
-  //   test("Then it should send data to the API and return a new book", async () => {
-  //     const bookData = new FormData();
-  //     bookData.append("name", "New Book");
-
-  //     const createdBook = { id: 1, name: "New Book" };
-
-  //     global.fetch = jest.fn().mockResolvedValue({
-  //       ok: true,
-  //       json: jest.fn().mockResolvedValue(createdBook),
-  //       headers: new Headers(),
-  //       redirected: false,
-  //       status: 200,
-  //       statusText: "OK",
-  //       type: "basic",
-  //       url: "https://dadabook.com/books",
-  //     });
-
-  //     const result = await bookRepository.create(bookData);
-
-  //     expect(global.fetch).toHaveBeenCalledWith("https://dadabook.com/books", {
-  //       method: "POST",
-  //       body: bookData,
-  //       headers: {
-  //         Authorization: "Bearer 123",
-  //         "Content-Type": "application/json",
-  //       },
-  //     });
-
-  //     expect(result).toEqual(createdBook);
-  //   });
-  // });
 
   describe("when delete function is called", () => {
     test("then if fetch is OK it should give nothing", async () => {

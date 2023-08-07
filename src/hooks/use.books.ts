@@ -22,27 +22,13 @@ export function UseBooks() {
   );
 
   const handleLoadBooks = useCallback(async () => {
-    console.log("Handle Load");
     dispatch(loadBookAsync(bookRepo));
   }, [dispatch, bookRepo]);
 
   const handleAddBook = async (book: FormData) => {
-    console.log("handle add book process");
     dispatch(createBookAsync({ repo: bookRepo, book }));
-    console.log("register book submitted");
   };
-
-  // const handleEditBook = async (data: Partial<Book>) => {
-  //   dispatch(editBookAsync({ repo, data }));
-  // };
-
-  // const handleLoadFiltered = useCallback(
-  //   async (book: string) => {
-  //     loadedBooks = await bookRepo.getFiltered(book);
-  //     dispatch(loadBookAsync);
-  //   },
-  //   [bookRepo]
-  // );
+  //  const handleEditBook
 
   const handleDelete = async (id: Book["id"]) => {
     await dispatch(
@@ -57,8 +43,6 @@ export function UseBooks() {
     handleLoadBooks,
     handleAddBook,
     handleDelete,
-    // handleLoadFiltered,
-    // handleEditBook,
     bookList,
     bookRepo,
   };

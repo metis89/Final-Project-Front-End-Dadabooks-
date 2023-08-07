@@ -20,7 +20,9 @@ header {
     }
     .logout_button {
       background-image: url(../../public/logout.png);
-      background-size: cover;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
       background-color: #ed7d7d;
       border-radius: 4px;
       width: 130px;
@@ -35,17 +37,23 @@ header {
       background-image: url(../../public/sign-up.png);
       background-size: 20px;
       background-size: contain;
-      background-color: transparent;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: #ed7d7d;
       border-radius: 4px;
       width: 110px;
       height: 50px;
       padding: 10px;
+      margin: 10px;
     }
     .login_button {
       background-image: url(../../public/login.png);
       background-size: 20px;
       background-size: contain;
-      background-color: transparent;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: #ed7d7d;
+
       border-radius: 4px;
       width: 110px;
       height: 50px;

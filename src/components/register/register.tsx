@@ -4,6 +4,7 @@ import { User } from "../../models/user";
 import { useNavigate } from "react-router-dom";
 import { Header } from "../header/header";
 import "./register.scss";
+import Swal from "sweetalert2";
 
 export default function Register() {
   const { handleRegister } = useUsers();
@@ -25,6 +26,7 @@ export default function Register() {
     handleRegister(data);
     console.log("handle submitted");
     formElement.reset();
+    Swal.fire({ icon: "success", text: "Thanks for signing up" });
     navigate("/login");
   };
 
@@ -39,7 +41,7 @@ export default function Register() {
             <label htmlFor="user">User Name: </label>
             <input type="text" id="user" name="user" />
           </div>
-          <div>
+          <div className="email_div">
             <label htmlFor="email">Email: </label>
             <input type="email" id="email" name="email" />
           </div>
@@ -47,7 +49,9 @@ export default function Register() {
             <label htmlFor="password">Password: </label>
             <input type="password" id="password" name="password" />
           </div>
-          <button type="submit">Sign Up</button>
+          <button type="submit" className="submit_button">
+            Sign Up
+          </button>
         </form>
       </div>
     </>

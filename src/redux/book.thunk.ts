@@ -26,6 +26,13 @@ export const createBookAsync = createAsyncThunk<
   return response;
 });
 
+export const updateBookAsync = createAsyncThunk<
+  Book,
+  { repo: BookRepository; id: Book["id"]; book: Partial<Book> }
+>("books/update", async ({ repo, id, book }) => {
+  return await repo.update(id, book);
+});
+
 export const deleteBookAsync = createAsyncThunk<
   boolean,
   { repo: BookRepository; id: string }
@@ -43,6 +50,10 @@ const bookSlice = createSlice({
       bookList: payload,
     }));
     builder.addCase(createBookAsync.fulfilled, (state, { payload }) => ({
+      ...state,
+      books: payload,
+    }));
+    builder.addCase(updateBookAsync.fulfilled, (state, { payload }) => ({
       ...state,
       books: payload,
     }));

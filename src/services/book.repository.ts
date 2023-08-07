@@ -23,7 +23,6 @@ export class BookRepository extends ApiRepository<Book> {
 
   async create(item: FormData): Promise<Book> {
     const response = await fetch(`${this.url}books`, {
-      /* istanbul ignore else */
       method: "POST",
       body: item,
       headers: {
@@ -31,6 +30,18 @@ export class BookRepository extends ApiRepository<Book> {
       },
     });
     return response.json() as Promise<Book>;
+  }
+
+  async update(id: Book["id"], item: Partial<Book>): Promise<Book> {
+    const response = await fetch(this.url + "/" + id, {
+      method: "PATCH",
+      body: JSON.stringify(item),
+      headers: { Authorization: "Bearer " + this.token },
+    });
+    console.log(response);
+    const updatedBook = await response.json();
+
+    return updatedBook as Book;
   }
 
   async delete(id: Book["id"]): Promise<boolean> {
@@ -43,7 +54,5 @@ export class BookRepository extends ApiRepository<Book> {
     });
     if (response.ok) return true;
     return false;
-
-    //
   }
 }

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Header } from "../header/header";
 import "./bookForms.scss";
 import { UseBooks } from "../../hooks/use.books";
+import Swal from "sweetalert2";
 
 export default function BookForm() {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ export default function BookForm() {
     const data = new FormData(bookForm);
     await handleAddBook(data);
     console.log("handle book");
-
+    Swal.fire({ icon: "success", text: "Book added" });
     navigate("/home");
   };
 
